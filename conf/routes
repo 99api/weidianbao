@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+GET  		/api/jiujiu/{pageNum}						Application.jiujiu
+GET  		/api/more										Application.moreIssues
+GET 		/api/listening									Application.listening
+GET 		/api/user/checkPhone						Account.checkPhone
+GET		/api/user/getSongMegCode			Account.getSongMessageCode
+GET		/api/captcha/{phone}/{captchaId}	Account.captcha
+
+#POST /api/listening								Application.listening
+
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+
+# admin
+*	   /admin              module:crud
+*      /                       module:secure
